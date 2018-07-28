@@ -1,0 +1,13 @@
+[user]
+  name  = "grezar"
+  email = "grezar.dev@gmail.com"
+[alias]
+  ad = add -A
+  ch = checkout
+  br = branch
+  di = diff
+  st = status
+  co = commit
+  ci = commit -a
+  pu = push
+  delete-merged-branches = branch --merged | grep -v '*' | xargs -I % git branch -d %
