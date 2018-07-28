@@ -13,7 +13,17 @@ syntax enable " syntax highlightを有効化
 filetype plugin on " filetypeを判別する
 
 "---------------------------------------
-" Dein
+" Plugins
+" インストール方法
+" :call dein#install()
+set runtimepath+=~/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin(expand('~/dotfiles/.vim/dein'))
+
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+
+call dein#end()
 
 "---------------------------------------
 " Options
