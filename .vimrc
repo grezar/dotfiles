@@ -9,7 +9,8 @@
 
 "---------------------------------------------------------------------
 " Basic
-syntax enable " syntax highlightを有効化
+syntax on          " syntax highlightを有効化
+colorscheme hybrid " colorchemeを設定
 filetype plugin on " filetypeを判別する
 
 "---------------------------------------------------------------------
