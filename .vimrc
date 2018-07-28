@@ -50,3 +50,11 @@ set showmatch                  " 括弧入力時に対応する括弧を表示
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set ttymouse=xterm2
+
+"---------------------------------------------------------------------
+" Key mappings
+inoremap <silent> jk <ESC> " jkでインサートモードを抜ける
+
+" 折り返されている行への移動を通常の行移動と同じにする
+nnoremap j gj
+nnoremap k gk
