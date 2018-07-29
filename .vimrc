@@ -24,6 +24,8 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('w0ng/vim-hybrid')
 call dein#add('Shougo/unite.vim')
 call dein#add('kien/ctrlp.vim')
+call dein#add('fatih/vim-go')
+call dein#add('Shougo/neomru.vim')
 
 call dein#end()
 
@@ -101,3 +103,6 @@ nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
 nnoremap <silent> <Space>cF :CtrlPRoot<CR>
 " 最近使ったファイルから検索
 nnoremap <silent> <Space>cr :CtrlPMRUFiles<CR>
+
+" For faith/vim-go
+let g:go_fmt_command = "goimports"
