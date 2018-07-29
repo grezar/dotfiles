@@ -22,6 +22,8 @@ call dein#begin(expand('~/dotfiles/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('w0ng/vim-hybrid')
+call dein#add('Shougo/unite.vim')
+call dein#add('kien/ctrlp.vim')
 
 call dein#end()
 
@@ -62,3 +64,36 @@ nnoremap k gk
 " Colors
 syntax on          " syntax highlightを有効化
 colorscheme hybrid " colorchemeを設定。dein#end()でプラグインを読み込んだあとに定義する必要がある。
+
+" For Shougo/unite.vim
+let g:unite_enable_start_insert=1 " インサートモードで開始
+let g:unite_source_history_yank_enable =1 " ヒストリー/ヤンク機能を追加
+
+nnoremap    [unite]   <Nop>
+nmap    <Space>u [unite]
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
+nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
+nnoremap <silent> [unite]t :<C-u>Unite<Space>tab<CR>
+nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
+nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
+nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> [unite]<CR> :<C-u>Unite<Space>file_rec:!<CR>
+
+if executable('hw')
+  let g:unite_source_grep_command = 'hw'
+  let g:unite_source_grep_default_opts = '--no-group --no-color'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+" For kien/ctrlp.vim
+" デフォルトのキーマッピングを無効化
+let g:ctrlp_map = '<Nop>'
+" カレントディレクトリを基準に検索nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
+nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
+" カレントバッファのルートディレクトリを基準に検索(root:自動認識)nnoremap <silent> <Space>cF :CtrlPRoot<CR>
+nnoremap <silent> <Space>cF :CtrlPRoot<CR>
+" 最近使ったファイルから検索
+nnoremap <silent> <Space>cr :CtrlPMRUFiles<CR>
