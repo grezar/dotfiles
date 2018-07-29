@@ -9,8 +9,6 @@
 
 "---------------------------------------------------------------------
 " Basic
-syntax on          " syntax highlightを有効化
-colorscheme hybrid " colorchemeを設定
 filetype plugin on " filetypeを判別する
 
 "---------------------------------------------------------------------
@@ -23,6 +21,7 @@ call dein#begin(expand('~/dotfiles/.vim/dein'))
 
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('w0ng/vim-hybrid')
 
 call dein#end()
 
@@ -59,3 +58,7 @@ inoremap <silent> jk <ESC> " jkでインサートモードを抜ける
 " 折り返されている行への移動を通常の行移動と同じにする
 nnoremap j gj
 nnoremap k gk
+
+" Colors
+syntax on          " syntax highlightを有効化
+colorscheme hybrid " colorchemeを設定。dein#end()でプラグインを読み込んだあとに定義する必要がある。
