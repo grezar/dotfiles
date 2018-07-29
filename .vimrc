@@ -89,6 +89,10 @@ if executable('hw')
 endif
 
 " For kien/ctrlp.vim
+" dotfilesを表示
+let g:ctrlp_show_hidden = 1
+" .gitignoreの内容を反映
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " デフォルトのキーマッピングを無効化
 let g:ctrlp_map = '<Nop>'
 " カレントディレクトリを基準に検索nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
