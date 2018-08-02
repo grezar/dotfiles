@@ -58,6 +58,7 @@ colors
 #
 alias g='git'
 alias gogo='cd $GOPATH'
+alias tf='terraform'
 
 #
 # Prompt
