@@ -21,6 +21,7 @@
 #         \/____/                  \/____/                  \/____/                  \|___|                   \/____/         
 #                                                                                                                             
 
+[ -f ~/.zshrc.office ] && source ~/.zshrc.office
 #
 # Basics
 #
