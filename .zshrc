@@ -40,7 +40,6 @@ setopt hist_reduce_blanks # ヒストリーに保存するときに余分なス�
 setopt auto_cd            # cdコマンドなしでもディレクトリ名のみで移動可能に
 setopt auto_pushd         # 自動でpushdを実行
 setopt pushd_ignore_dups  # pushdから重複を削除
-setopt correct            # コマンドの間違いを修正
 setopt print_eight_bit    # 日本語ファイルの表示を可能にする
 setopt prompt_subst       # プロンプトが表示されるたびにプロンプト文字列を評価する
 
