@@ -11,3 +11,5 @@
   ci = commit -a
   pu = push
   delete-merged-branches = branch --merged | grep -v '*' | xargs -I % git branch -d %
+[core]
+  editor = vim -c \"set fenc=utf-8\"
