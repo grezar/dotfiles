@@ -26,7 +26,7 @@
 # Basics
 #
 export LANG=en_US.UTF-8  # 英語を使用する
-export GOPATH=~/workspace/go
+export GOPATH=~/ghq
 export PATH=$PATH:$GOPATH/bin
 export PATH=/usr/local/bin:$PATH
 
@@ -52,10 +52,10 @@ promptinit
 autoload -Uz colors
 colors
 
-
 #
 # Aliases
 #
+alias grezar='cd ~/ghq/src/github.com/grezar'
 alias g='git'
 alias gogo='cd $GOPATH'
 alias tf='terraform'
