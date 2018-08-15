@@ -27,6 +27,9 @@ call dein#add('Shougo/unite.vim')
 call dein#add('kien/ctrlp.vim')
 call dein#add('fatih/vim-go')
 call dein#add('Shougo/neomru.vim')
+call dein#add('itchyny/lightline.vim')
+call dein#add('bronson/vim-trailing-whitespace') " :FixWhitespace will delete hilighted white spaces
+call dein#add('Yggdroot/indentLine')
 
 call dein#end()
 
@@ -58,6 +61,8 @@ set showmatch                  " 括弧入力時に対応する括弧を表示
 set hlsearch                   " 検索結果をハイライト
 set cursorline                 " カーソルラインをハイライト
 set wildmenu                   " コマンドモードの補完候補をわかりやすく表示
+set laststatus=2               " ステータスラインを常に表示
+set ruler                      " ステータスラインの右側にカーソルの現在位置を表示
 
 " ターミナルでマウスを使用できるようにする
 set mouse=a
