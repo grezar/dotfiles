@@ -57,6 +57,7 @@ set shiftwidth=4               " smartindentで増減する幅
 set showmatch                  " 括弧入力時に対応する括弧を表示
 set hlsearch                   " 検索結果をハイライト
 set cursorline                 " カーソルラインをハイライト
+set wildmenu                   " コマンドモードの補完候補をわかりやすく表示
 
 " ターミナルでマウスを使用できるようにする
 set mouse=a
