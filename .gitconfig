@@ -14,5 +14,5 @@
 [core]
   editor = vim -c \"set fenc=utf-8\"
 [ghq]
-  root = ~/ghq
+  root = ~/ghq/src
   vcs = git
