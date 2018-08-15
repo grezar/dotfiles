@@ -52,6 +52,8 @@ set ignorecase                 " 検索文字列が小文字のみのときに�
 set smartcase                  " 検索文字列に大文字が含まれている場合に区別する
 set wrapscan                   " 検索時に最後まで行ったら最初に戻る
 set autoindent                 " オートインデントする
+set smartindent                " 改行時に前の行の構文をチェックし次の行のインデントを増減する
+set shiftwidth=4               " smartindentで増減する幅
 set showmatch                  " 括弧入力時に対応する括弧を表示
 set hlsearch                   " 検索結果をハイライト
 
@@ -62,6 +64,7 @@ set ttymouse=xterm2
 "---------------------------------------------------------------------
 " Key mappings
 inoremap <silent> jk <ESC> " jkでインサートモードを抜ける
+nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR> " ハイライトを解除
 
 " 折り返されている行への移動を通常の行移動と同じにする
 nnoremap j gj
