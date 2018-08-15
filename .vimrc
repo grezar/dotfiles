@@ -25,6 +25,7 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('w0ng/vim-hybrid')
 call dein#add('Shougo/unite.vim')
 call dein#add('kien/ctrlp.vim')
+call dein#add('tacahiroy/ctrlp-funky')
 call dein#add('fatih/vim-go')
 call dein#add('Shougo/neomru.vim')
 call dein#add('itchyny/lightline.vim')
@@ -129,8 +130,14 @@ endif
 let g:ctrlp_show_hidden = 1
 " .gitignoreの内容を反映
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100' " マッチウインドウの設定. 「下部に表示, 大きさ20行で固定, 検索結果100件」
+let g:ctrlp_types = ['fil'] "ファイル検索のみ使用
+let g:ctrlp_extensions = ['funky'] " CtrlPの拡張として「funky」を使用
+let g:ctrlp_funky_matchtype = 'path' " CtrlPFunkyの有効化
 " デフォルトのキーマッピングを無効化
 let g:ctrlp_map = '<Nop>'
+let g:ctrlp_use_caching=0 " キャッシュを使わない
 " カレントディレクトリを基準に検索nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
 nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
 " カレントバッファのルートディレクトリを基準に検索(root:自動認識)nnoremap <silent> <Space>cF :CtrlPRoot<CR>
