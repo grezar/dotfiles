@@ -50,6 +50,7 @@ set smartcase                  " 検索文字列に大文字が含まれてい�
 set wrapscan                   " 検索時に最後まで行ったら最初に戻る
 set autoindent                 " オートインデントする
 set showmatch                  " 括弧入力時に対応する括弧を表示
+set hlsearch                   " 検索結果をハイライト
 
 " ターミナルでマウスを使用できるようにする
 set mouse=a
@@ -66,6 +67,26 @@ nnoremap k gk
 " Colors
 syntax on          " syntax highlightを有効化
 colorscheme hybrid " colorchemeを設定。dein#end()でプラグインを読み込んだあとに定義する必要がある。
+
+" Indent
+filetype plugin on
+"ファイルタイプに合わせたインデントを利用
+filetype indent on
+"sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
+autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
+autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
+autocmd FileType js          setlocal sw=4 sts=4 ts=4 et
+autocmd FileType zsh         setlocal sw=4 sts=4 ts=4 et
+autocmd FileType python      setlocal sw=4 sts=4 ts=4 et
+autocmd FileType scala       setlocal sw=4 sts=4 ts=4 et
+autocmd FileType json        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
+autocmd FileType scss        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType javascript  setlocal sw=4 sts=4 ts=4 et
+autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
 
 " For Shougo/unite.vim
 let g:unite_enable_start_insert=1 " インサートモードで開始
