@@ -34,6 +34,7 @@ call dein#add('Yggdroot/indentLine')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
+call dein#add('hashivim/vim-terraform')
 
 call dein#end()
 
@@ -164,3 +165,6 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>" " バックスペー
 imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
 " タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ
 imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+
+" For hashivim/vim-terraform
+let g:terraform_fmt_on_save = 1 " 保存時にterraform fmtを実行
