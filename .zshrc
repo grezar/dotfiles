@@ -78,3 +78,14 @@ PROMPT='%~${vcs_info_msg_0_} > '
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 alias lg='lazygit'
+
+#
+# evnws
+#
+function envws() {
+  if [ "$(envws-helper eval-commands --command $1)" = "true" ]; then
+    eval $(envws-helper $@)
+  else
+    envws-helper $@
+  fi
+}
