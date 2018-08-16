@@ -20,6 +20,10 @@ set runtimepath+=~/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/dotfiles/.vim/dein'))
 
+if dein#check_install()
+  call dein#install()
+endif
+
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('w0ng/vim-hybrid')
