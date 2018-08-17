@@ -83,7 +83,7 @@ alias lg='lazygit'
 # evnws
 #
 function envws() {
-  if [ "$(envws-helper eval-commands --command $1)" = "true" ]; then
+  if [ "$(envws-helper e -c $1)" = "true" ]; then
     eval $(envws-helper $@)
   else
     envws-helper $@
