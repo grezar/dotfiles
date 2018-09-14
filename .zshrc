@@ -56,9 +56,10 @@ colors
 # Aliases
 #
 alias grezar='cd ~/ghq/src/github.com/grezar'
-alias g='git'
 alias gogo='cd $GOPATH'
 alias tf='terraform'
+alias g='cd $(ghq root)/$(ghq list | peco)'
+alias h='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 
 #
 # Prompt
