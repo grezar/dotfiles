@@ -36,6 +36,10 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('hashivim/vim-terraform')
 
+if dein#check_install()
+  call dein#install()
+endif
+
 call dein#end()
 
 "---------------------------------------------------------------------
