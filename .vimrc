@@ -16,13 +16,9 @@ filetype plugin on " filetypeを判別する
 " Plugins
 " インストール方法
 " :call dein#install()
-set runtimepath+=~/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('~/dotfiles/.vim/dein'))
-
-if dein#check_install()
-  call dein#install()
-endif
+call dein#begin(expand('~/.vim/dein'))
 
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
