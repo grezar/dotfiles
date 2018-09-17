@@ -35,6 +35,7 @@ call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('hashivim/vim-terraform')
+call dein#add('slim-template/vim-slim')
 
 if dein#check_install()
   call dein#install()
