@@ -90,3 +90,17 @@ function envws() {
     envws-helper $@
   fi
 }
+
+export NVM_DIR="$HOME/.nvm"
+
+function node() {
+  unset -f node
+  nvm &>/dev/null
+  node "$@"
+}
+
+function nvm() {
+  unset -f nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  nvm "$@"
+}
