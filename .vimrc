@@ -36,6 +36,7 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('hashivim/vim-terraform')
 call dein#add('slim-template/vim-slim')
+call dein#add('tpope/vim-rails.git')
 
 if dein#check_install()
   call dein#install()
