@@ -30,7 +30,6 @@ call dein#add('fatih/vim-go')
 call dein#add('Shougo/neomru.vim')
 call dein#add('itchyny/lightline.vim')
 call dein#add('bronson/vim-trailing-whitespace') " :FixWhitespace will delete hilighted white spaces
-call dein#add('Yggdroot/indentLine')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
