@@ -9,13 +9,13 @@
 
 "---------------------------------------------------------------------
 " Basic
+set encoding=utf-8
+set fileencoding=utf-8
 scriptencoding utf-8 "Vim script内でマルチバイト文字を使う場合の文字コードの設定。vimrcファイルもvim scriptに含まれるので日本語のコメントを書く場合は先頭にこの設定が必要
 filetype plugin on " filetypeを判別する
 
 "---------------------------------------------------------------------
 " Plugins
-" インストール方法
-" :call dein#install()
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
@@ -45,8 +45,6 @@ call dein#end()
 
 "---------------------------------------------------------------------
 " Options
-set encoding=utf-8             " ファイルを読み込むときの文字コードの設定
-set fileencoding=utf-8         " ファイルを保存するときの文字コードの設定
 set fenc=utf-8                 " 文字コードをutf-8に設定
 set hidden                     " bufferが編集中でも他のファイルを開けるようにする
 set number                     " 行番号を表示する
