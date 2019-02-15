@@ -30,7 +30,9 @@ call dein#add('fatih/vim-go')
 call dein#add('Shougo/neomru.vim')
 call dein#add('itchyny/lightline.vim')
 call dein#add('bronson/vim-trailing-whitespace') " :FixWhitespace will delete hilighted white spaces
-call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/deoplete.nvim')
+call dein#add('roxma/nvim-yarp')
+call dein#add('roxma/vim-hug-neovim-rpc')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('hashivim/vim-terraform')
@@ -170,3 +172,6 @@ imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosni
 
 " For hashivim/vim-terraform
 let g:terraform_fmt_on_save = 1 " 保存時にterraform fmtを実行
+
+" For Shougo/deoplete.nvim
+let g:deoplete#enable_at_startup = 1
