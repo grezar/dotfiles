@@ -23,8 +23,7 @@ call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('w0ng/vim-hybrid')
-call dein#add('Shougo/unite.vim')
-call dein#add('kien/ctrlp.vim')
+call dein#add('Shougo/denite.nvim')
 call dein#add('tacahiroy/ctrlp-funky')
 call dein#add('fatih/vim-go')
 call dein#add('Shougo/neomru.vim')
@@ -79,6 +78,8 @@ set ttymouse=xterm2
 
 "---------------------------------------------------------------------
 " Key mappings
+let mapleader = "\<Space>"
+
 inoremap <silent> jk <ESC> " jkでインサートモードを抜ける
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR> " ハイライトを解除
 nnoremap <silent> sh :belowright :terminal<CR>
@@ -111,48 +112,20 @@ autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType javascript  setlocal sw=4 sts=4 ts=4 et
 autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
 
-" For Shougo/unite.vim
-let g:unite_enable_start_insert=1 " インサートモードで開始
-let g:unite_source_history_yank_enable =1 " ヒストリー/ヤンク機能を追加
+" For Shougo/denite.vim
+nnoremap    [denite]   <Nop>
+nmap    <Leader>d [denite]
+nnoremap <silent> [denite]f :Denite file<CR>
+nnoremap <silent> [denite]F :Denite file_rec<CR>
+nnoremap <silent> [denite]g :Denite grep<CR>
 
-nnoremap    [unite]   <Nop>
-nmap    <Space>u [unite]
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
-nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
-nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
-nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
-nnoremap <silent> [unite]t :<C-u>Unite<Space>tab<CR>
-nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
-nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
-nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-nnoremap <silent> [unite]<CR> :<C-u>Unite<Space>file_rec:!<CR>
+call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
 
-if executable('hw')
-  let g:unite_source_grep_command = 'hw'
-  let g:unite_source_grep_default_opts = '--no-group --no-color'
-  let g:unite_source_grep_recursive_opt = ''
+if executable('rg')
+  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
+  call denite#custom#var('grep', 'command', ['rg'])
 endif
-
-" For kien/ctrlp.vim
-" dotfilesを表示
-let g:ctrlp_show_hidden = 1
-" .gitignoreの内容を反映
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100' " マッチウインドウの設定. 「下部に表示, 大きさ20行で固定, 検索結果100件」
-let g:ctrlp_types = ['fil'] "ファイル検索のみ使用
-let g:ctrlp_extensions = ['funky'] " CtrlPの拡張として「funky」を使用
-let g:ctrlp_funky_matchtype = 'path' " CtrlPFunkyの有効化
-" デフォルトのキーマッピングを無効化
-let g:ctrlp_map = '<Nop>'
-let g:ctrlp_use_caching=0 " キャッシュを使わない
-" カレントディレクトリを基準に検索nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
-nnoremap <silent> <Space>cf :CtrlPCurWD<CR>
-" カレントバッファのルートディレクトリを基準に検索(root:自動認識)nnoremap <silent> <Space>cF :CtrlPRoot<CR>
-nnoremap <silent> <Space>cF :CtrlPRoot<CR>
-" 最近使ったファイルから検索
-nnoremap <silent> <Space>cr :CtrlPMRUFiles<CR>
 
 " For faith/vim-go
 let g:go_fmt_command = "goimports"
