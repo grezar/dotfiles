@@ -81,7 +81,7 @@ set ttymouse=xterm2
 " Key mappings
 inoremap <silent> jk <ESC> " jkでインサートモードを抜ける
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR> " ハイライトを解除
-nnoremap <silent> T :<C-u>terminal<CR>
+nnoremap <silent> sh :belowright :terminal<CR>
 
 " 折り返されている行への移動を通常の行移動と同じにする
 nnoremap j gj
