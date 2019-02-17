@@ -36,6 +36,7 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('hashivim/vim-terraform')
 call dein#add('slim-template/vim-slim')
+call dein#add('zchee/deoplete-go', {'build': 'make'})
 
 if dein#check_install()
   call dein#install()
@@ -141,3 +142,7 @@ let g:terraform_fmt_on_save = 1 " 保存時にterraform fmtを実行
 
 " For Shougo/deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+
+" For deoplete-plugins/deoplete-go
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
