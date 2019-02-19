@@ -19,7 +19,6 @@
 "
 " TABLE OF CONTENTS
 "
-" - Basic Settings
 " - Plugins
 " - Plugin Settings
 " - General Settings
@@ -63,7 +62,6 @@ call dein#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " For Shougo/denite.vim
-
 if executable('rg')
   call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
   call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
