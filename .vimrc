@@ -48,8 +48,6 @@ call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('roxma/nvim-yarp')
 call dein#add('roxma/vim-hug-neovim-rpc')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
 call dein#add('hashivim/vim-terraform')
 call dein#add('slim-template/vim-slim')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
@@ -65,13 +63,20 @@ call dein#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " For Shougo/denite.vim
-call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
 
 if executable('rg')
   call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
-  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
 endif
+
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
 
 " For faith/vim-go
 let g:go_fmt_command = "goimports"
@@ -193,9 +198,10 @@ inoremap <silent> jk <ESC>
 nnoremap <silent><Esc><Esc> :set nohlsearch!<CR>
 nnoremap <silent> sh :belowright :terminal<CR>
 
+" For Shougo/denite.vim
 nnoremap [denite] <Nop>
 nmap <leader>d [denite]
-nnoremap <silent> [denite]f :Denite file_rec<CR>
+nnoremap <silent> [denite]f :Denite file_rec -highlight-matched-char="Function"<CR>
 nnoremap <silent> [denite]g :Denite grep<CR>
 
 " Treat collapsed line same as normal line
