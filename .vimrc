@@ -196,6 +196,12 @@ inoremap <silent> jk <ESC>
 nnoremap <silent><Esc><Esc> :set nohlsearch!<CR>
 nnoremap <silent> sh :belowright :terminal<CR>
 
+" Move window comfortably
+nnoremap <silent> <C-h> <C-W>h
+nnoremap <silent> <C-l> <C-W>l
+nnoremap <silent> <C-j> <C-W>j
+nnoremap <silent> <C-k> <C-W>k
+
 " For Shougo/denite.vim
 nnoremap [denite] <Nop>
 nmap <leader>d [denite]
