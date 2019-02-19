@@ -32,8 +32,6 @@ call dein#add('bronson/vim-trailing-whitespace') " :FixWhitespace will delete hi
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('roxma/nvim-yarp')
 call dein#add('roxma/vim-hug-neovim-rpc')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
 call dein#add('hashivim/vim-terraform')
 call dein#add('slim-template/vim-slim')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
