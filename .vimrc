@@ -1,21 +1,37 @@
-"---------------------------------------------------------------------
-"          _
-"   _   __(_)___ ___  __________
-"  | | / / / __ `__ \/ ___/ ___/
-" _| |/ / / / / / / / /  / /__
-"(_)___/_/_/ /_/ /_/_/   \___/
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"      ___                       ___           ___           ___
+"     /\__\          ___        /\__\         /\  \         /\  \ 
+"    /:/  /         /\  \      /::|  |       /::\  \       /::\  \ 
+"   /:/  /          \:\  \    /:|:|  |      /:/\:\  \     /:/\:\  \ 
+"  /:/__/  ___      /::\__\  /:/|:|__|__   /::\~\:\  \   /:/  \:\  \ 
+"  |:|  | /\__\  __/:/\/__/ /:/ |::::\__\ /:/\:\ \:\__\ /:/__/ \:\__\
+"  |:|  |/:/  / /\/:/  /    \/__/~~/:/  / \/_|::\/:/  / \:\  \  \/__/
+"  |:|__/:/  /  \::/__/           /:/  /     |:|::/  /   \:\  \ 
+"   \::::/__/    \:\__\          /:/  /      |:|\/__/     \:\  \ 
+"    ~~~~         \/__/         /:/  /       |:|  |        \:\__\ 
+"                               \/__/         \|__|         \/__/
 "
-"---------------------------------------------------------------------
-
-"---------------------------------------------------------------------
-" Basic
-set encoding=utf-8
-set fileencoding=utf-8
-scriptencoding utf-8 "Vim script内でマルチバイト文字を使う場合の文字コードの設定。vimrcファイルもvim scriptに含まれるので日本語のコメントを書く場合は先頭にこの設定が必要
-filetype plugin on " filetypeを判別する
-
-"---------------------------------------------------------------------
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" .vimrc
+"
+" Maintained by grezar
+"
+" TABLE OF CONTENTS
+"
+" - Basic Settings
+" - Plugins
+" - Plugin Settings
+" - General Settings
+" - Search Options
+" - Text Settings
+" - Key Mappings
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
@@ -28,7 +44,7 @@ call dein#add('tacahiroy/ctrlp-funky')
 call dein#add('fatih/vim-go')
 call dein#add('Shougo/neomru.vim')
 call dein#add('itchyny/lightline.vim')
-call dein#add('bronson/vim-trailing-whitespace') " :FixWhitespace will delete hilighted white spaces
+call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('roxma/nvim-yarp')
 call dein#add('roxma/vim-hug-neovim-rpc')
@@ -44,60 +60,112 @@ endif
 
 call dein#end()
 
-"---------------------------------------------------------------------
-" Options
-set fenc=utf-8                 " 文字コードをutf-8に設定
-set hidden                     " bufferが編集中でも他のファイルを開けるようにする
-set number                     " 行番号を表示する
-set title                      " タイトルをウィンドウ枠に表示
-set nobackup                   " backupを取らない
-set autoread                   " 変更があったときに自動で読み込む
-set noswapfile                 " swapファイルを作らない
-set showcmd                    " コマンドをステータス行に表示
-set showmode                   " 現在のモードを表示
-set notitle                    " vimのtitleを表示しない
-set vb t_vb=                   " ビープを鳴らさないようにする
-set backspace=indent,eol,start " バックスペースで消せるようにする
-set clipboard+=unnamed         " OSのclipboardを使用する
-set clipboard=unnamed          " ヤンクをシステムのクリップボードに共有する
-set ignorecase                 " 検索文字列が小文字のみのときに大文字小文字を区別しない
-set smartcase                  " 検索文字列に大文字が含まれている場合に区別する
-set wrapscan                   " 検索時に最後まで行ったら最初に戻る
-set autoindent                 " オートインデントする
-set smartindent                " 改行時に前の行の構文をチェックし次の行のインデントを増減する
-set shiftwidth=4               " smartindentで増減する幅
-set showmatch                  " 括弧入力時に対応する括弧を表示
-set hlsearch                   " 検索結果をハイライト
-set cursorline                 " カーソルラインをハイライト
-set wildmenu                   " コマンドモードの補完候補をわかりやすく表示
-set laststatus=2               " ステータスラインを常に表示
-set ruler                      " ステータスラインの右側にカーソルの現在位置を表示
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ターミナルでマウスを使用できるようにする
-set mouse=a
-set ttymouse=xterm2
+" For Shougo/denite.vim
+call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
 
-"---------------------------------------------------------------------
-" Key mappings
-let mapleader = "\<Space>"
+if executable('rg')
+  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
+  call denite#custom#var('grep', 'command', ['rg'])
+endif
 
-inoremap <silent> jk <ESC> " jkでインサートモードを抜ける
-nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR> " ハイライトを解除
-nnoremap <silent> sh :belowright :terminal<CR>
+" For faith/vim-go
+let g:go_fmt_command = "goimports"
 
-" 折り返されている行への移動を通常の行移動と同じにする
-nnoremap j gj
-nnoremap k gk
+" For hashivim/vim-terraform
+let g:terraform_fmt_on_save = 1
 
-" Colors
-syntax on          " syntax highlightを有効化
-colorscheme hybrid " colorchemeを設定。dein#end()でプラグインを読み込んだあとに定義する必要がある。
+" For Shougo/deoplete.nvim
+let g:deoplete#enable_at_startup = 1
 
-" Indent
+" For deoplete-plugins/deoplete-go
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set the charcter encodings
+set encoding=utf-8
+set fileencoding=utf-8
+scriptencoding utf-8
+
+" Let Vim try and figure out filetypes if it can
 filetype plugin on
-"ファイルタイプに合わせたインデントを利用
-filetype indent on
-"sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
+
+" Enable syntax highlighting
+syntax on
+
+" Set colorscheme
+colorscheme hybrid
+
+" Open file even if buffer is opened
+set hidden
+
+" Show line numbers
+set number
+
+" Show command to status bar
+set showcmd
+
+" Show current mode
+set showmode
+
+" Set title of the window to the filename
+set title
+
+" Save without unnecessary stuffs
+set nobackup
+set noswapfile
+
+" Load diff automatically when file are updated
+set autoread
+
+" Disable beep sound
+set vb t_vb=
+
+" Configure backspace so it acts as it should act
+set backspace=indent,eol,start
+
+" Show matching brackets when text indicator is over them
+set showmatch
+
+" Highlight cursor line
+set cursorline
+
+" Operate command-line completion in an enhanced mode
+set wildmenu
+
+" Always show status line
+set laststatus=2
+
+" Show the line and column number of the cursor position
+set ruler
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search Optinos
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set ignorecase                 " Set case insensitive search as the default behaviour
+set smartcase                  " Smart case search ignores case if search pattern is all lowercase
+set wrapscan                   " If search hit bottom, continuing at top
+set hlsearch                   " Highlight search matches
+set incsearch                  " Should show search matches as you type
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text tab, spaces Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set expandtab                  " Use spaces instead of tabs
+set autoindent                 " Enable auto indent
+set smartindent                " Insert indent according to shiftwidth
+set shiftwidth=4               " 1 tab == 4 spaces
+
 autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
 autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
@@ -113,36 +181,24 @@ autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType javascript  setlocal sw=4 sts=4 ts=4 et
 autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
 
-" For Shougo/denite.vim
-nnoremap    [denite]   <Nop>
-nmap    <Leader>d [denite]
-nnoremap <silent> [denite]f :Denite file<CR>
-nnoremap <silent> [denite]F :Denite file_rec<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key Mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <space> <nop>
+xnoremap <space> <nop>
+let mapleader = "\<space>"
+
+inoremap <silent> jk <ESC>
+nnoremap <silent><Esc><Esc> :set nohlsearch!<CR>
+nnoremap <silent> sh :belowright :terminal<CR>
+
+nnoremap [denite] <Nop>
+nmap <leader>d [denite]
+nnoremap <silent> [denite]f :Denite file_rec<CR>
 nnoremap <silent> [denite]g :Denite grep<CR>
 
-call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+" Treat collapsed line same as normal line
+nnoremap j gj
+nnoremap k gk
 
-if executable('rg')
-  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
-  call denite#custom#var('grep', 'command', ['rg'])
-endif
-
-" For faith/vim-go
-let g:go_fmt_command = "goimports"
-
-" For Shougo/neosnippet
-" エンターキーで補完候補の確定. スニペットの展開もエンターキーで確定
-imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
-" タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ
-imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
-
-" For hashivim/vim-terraform
-let g:terraform_fmt_on_save = 1 " 保存時にterraform fmtを実行
-
-" For Shougo/deoplete.nvim
-let g:deoplete#enable_at_startup = 1
-
-" For deoplete-plugins/deoplete-go
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
