@@ -51,6 +51,7 @@ call dein#add('hashivim/vim-terraform')
 call dein#add('slim-template/vim-slim')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('cohama/lexima.vim')
+call dein#add('tpope/vim-fugitive')
 
 if dein#check_install()
   call dein#install()
@@ -89,6 +90,9 @@ let g:deoplete#enable_at_startup = 1
 " For deoplete-plugins/deoplete-go
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" For tpope/vim-fugitive
+set statusline+=%{FugitiveStatusline()}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Settings
@@ -208,6 +212,19 @@ nnoremap [denite] <Nop>
 nmap <leader>d [denite]
 nnoremap <silent> [denite]f :Denite file_rec -highlight-matched-char="Function"<CR>
 nnoremap <silent> [denite]g :Denite grep<CR>
+
+" For tpope/vim-fugitive
+nnoremap [fugitive] <Nop>
+nmap <leader>g [fugitive]
+nnoremap <silent> [fugitive]s :Gstatus<CR>
+nnoremap <silent> [fugitive]d :Gdiff<CR>
+nnoremap <silent> [fugitive]b :Gblame<CR>
+nnoremap <silent> [fugitive]c :Gcommit<CR>
+nnoremap <silent> [fugitive]a :Gwrite<CR>
+nnoremap <silent> [fugitive]r :Grebase<CR>
+nnoremap <silent> [fugitive]p :Gpush<CR>
+nnoremap <silent> [fugitive]l :Glog<CR>
+nnoremap <silent> [fugitive]f :Gfetch<CR>
 
 " Treat collapsed line same as normal line
 nnoremap j gj
