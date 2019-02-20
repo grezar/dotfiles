@@ -50,6 +50,7 @@ call dein#add('roxma/vim-hug-neovim-rpc')
 call dein#add('hashivim/vim-terraform')
 call dein#add('slim-template/vim-slim')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
+call dein#add('cohama/lexima.vim')
 
 if dein#check_install()
   call dein#install()
