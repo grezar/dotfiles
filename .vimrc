@@ -213,3 +213,5 @@ nnoremap <silent> [denite]g :Denite grep<CR>
 nnoremap j gj
 nnoremap k gk
 
+" Source .vimrc
+nnoremap <silent> <leader>s :source .vimrc<CR>
