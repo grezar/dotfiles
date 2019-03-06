@@ -52,6 +52,7 @@ call dein#add('slim-template/vim-slim')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('cohama/lexima.vim')
 call dein#add('tpope/vim-fugitive')
+call dein#add('juliosueiras/vim-terraform-completion')
 
 if dein#check_install()
   call dein#install()
