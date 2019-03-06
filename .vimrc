@@ -168,6 +168,8 @@ set incsearch                  " Should show search matches as you type
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text tab, spaces Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable loading the indent file for specific file types
+filetype indent on
 
 set expandtab                  " Use spaces instead of tabs
 set autoindent                 " Enable auto indent
