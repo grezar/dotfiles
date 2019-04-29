@@ -53,6 +53,7 @@ call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('cohama/lexima.vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('juliosueiras/vim-terraform-completion')
+call dein#add('grezar/power-vim')
 
 if dein#check_install()
   call dein#install()
@@ -66,7 +67,7 @@ call dein#end()
 
 " For Shougo/denite.vim
 if executable('rg')
-  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
+  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git', '--hidden'])
   call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'final_opts', [])
