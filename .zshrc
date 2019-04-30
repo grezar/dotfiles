@@ -60,6 +60,7 @@ alias gogo='cd $GOPATH'
 alias tf='terraform'
 alias g='cd $(ghq root)/$(ghq list | peco)'
 alias h='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+alias k='kubectl'
 
 #
 # Prompt
@@ -104,3 +105,8 @@ function nvm() {
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   nvm "$@"
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/makita.riki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/makita.riki/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/makita.riki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/makita.riki/google-cloud-sdk/completion.zsh.inc'; fi
