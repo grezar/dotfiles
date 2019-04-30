@@ -42,6 +42,7 @@ call dein#add('Shougo/denite.nvim')
 call dein#add('tacahiroy/ctrlp-funky')
 call dein#add('fatih/vim-go')
 call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/defx.nvim')
 call dein#add('itchyny/lightline.vim')
 call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('Shougo/deoplete.nvim')
@@ -54,6 +55,8 @@ call dein#add('cohama/lexima.vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('juliosueiras/vim-terraform-completion')
 call dein#add('grezar/power-vim')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
 if dein#check_install()
   call dein#install()
@@ -179,19 +182,16 @@ set smartindent                " Insert indent according to shiftwidth
 set shiftwidth=4               " 1 tab == 4 spaces
 
 autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
-autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
-autocmd FileType js          setlocal sw=4 sts=4 ts=4 et
-autocmd FileType zsh         setlocal sw=4 sts=4 ts=4 et
-autocmd FileType python      setlocal sw=4 sts=4 ts=4 et
-autocmd FileType scala       setlocal sw=4 sts=4 ts=4 et
-autocmd FileType json        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType rb          setlocal sw=2 sts=2 ts=2 et
+autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
+autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
+autocmd FileType py          setlocal sw=2 sts=2 ts=2 et
 autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
 autocmd FileType scss        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType javascript  setlocal sw=4 sts=4 ts=4 et
-autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
+autocmd FileType json        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType yml         setlocal sw=2 sts=2 ts=2 et
+autocmd FileType sh          setlocal sw=2 sts=2 ts=2 et
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings
@@ -216,6 +216,7 @@ nnoremap [denite] <Nop>
 nmap <leader>d [denite]
 nnoremap <silent> [denite]f :Denite file_rec -highlight-matched-char="Function"<CR>
 nnoremap <silent> [denite]g :Denite grep<CR>
+nnoremap <silent> [denite]b :Denite buffer<CR>
 
 " For tpope/vim-fugitive
 nnoremap [fugitive] <Nop>
@@ -235,4 +236,78 @@ nnoremap j gj
 nnoremap k gk
 
 " Source .vimrc
-nnoremap <silent> <leader>s :source .vimrc<CR>
+nnoremap <silent> <leader>s :source ~/.vimrc<CR>
+
+" Open .vimrc quickly
+nnoremap <silent> <leader>o :vsplit ~/.vimrc<CR>
+
+" For Shougo/defx.nvim
+nnoremap <silent> <leader>f :Defx<CR>
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('open', 'pedit')
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> K
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+  \ defx#do_action('toggle_columns',
+  \                'mark:indent:icon:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+  \ defx#do_action('toggle_sort', 'time')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+  \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+  \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
+endfunction
+
+" For bronson/vim-trailing-whitespace
+let g:extra_whitespace_ignored_filetypes = ['defx']
