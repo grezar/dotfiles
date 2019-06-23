@@ -61,6 +61,7 @@ alias tf='terraform'
 alias g='cd $(ghq root)/$(ghq list | peco)'
 alias h='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias k='kubectl'
+alias vim='nvim'
 
 #
 # Prompt
