@@ -54,7 +54,6 @@ call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('cohama/lexima.vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('juliosueiras/vim-terraform-completion')
-call dein#add('grezar/power-vim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 
