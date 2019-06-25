@@ -48,6 +48,7 @@ set expandtab
 set autoindent
 set smartindent
 set backspace=indent,eol,start
+set clipboard=unnamed
 
 autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
 autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
