@@ -74,6 +74,7 @@ nnoremap <silent> <C-h> <C-W>h
 nnoremap <silent> <C-l> <C-W>l
 nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
+nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap j gj
 nnoremap k gk
 
@@ -114,7 +115,6 @@ if executable('rg')
 endif
 
 call denite#custom#source('file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
-call denite#custom#kind('file', 'default_action', 'vsplit')
 
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
