@@ -7,12 +7,13 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
   call dein#add('Shougo/denite.nvim')
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/defx.nvim')
   call dein#add('w0ng/vim-hybrid')
   call dein#add('cohama/lexima.vim')
   call dein#add('itchyny/lightline.vim')
   call dein#add('hashivim/vim-terraform')
-  call dein#add('juliosueiras/vim-terraform-completion')
   call dein#add('bronson/vim-trailing-whitespace')
+  call dein#add('kristijanhusak/defx-icons')
   call dein#end()
   call dein#save_state()
 endif
@@ -85,6 +86,7 @@ nmap <leader>d [denite]
 nnoremap <silent> [denite]f :Denite file/rec<CR>
 nnoremap <silent> [denite]g :Denite grep<CR>
 nnoremap <silent> [denite]b :Denite buffer<CR>
+nnoremap <silent><C-n> :Defx<CR>
 
 " ctags
 let g:pid = getpid()
@@ -135,6 +137,33 @@ endfunction
 
 " Shougo/deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+
+" Shougo/defx.nvim
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#is_directory() ? defx#do_action('open') :
+  \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> s
+  \ defx#do_action('multi', ['drop', 'split'])
+  nnoremap <silent><buffer><expr> v
+  \ defx#do_action('multi', ['drop', 'vsplit'])
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> t
+  \ defx#do_action('toggle_ignored_files')
+endfunction
+
+autocmd VimEnter * call defx#custom#option('_', {
+     \   'columns': 'indent:icons:filename:type',
+     \   'direction': 'topleft',
+     \   'split': 'vertical',
+     \   'winwidth': 40,
+     \   'toggle': 1,
+     \   'show_ignored_files': 1,
+     \ })
 
 " hashivim/vim-terraform
 let g:terraform_align=1
