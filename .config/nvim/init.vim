@@ -14,6 +14,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('hashivim/vim-terraform')
   call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('kristijanhusak/defx-icons')
+  call dein#add('majutsushi/tagbar')
   call dein#end()
   call dein#save_state()
 endif
@@ -172,3 +173,6 @@ let g:terraform_fmt_on_save=1
 
 " bronson/vim-trailing-whitespace
 autocmd BufWrite * silent! :FixWhitespace
+
+" majutsushi/tagbar
+autocmd VimEnter * nested :TagbarOpen
