@@ -12,6 +12,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('itchyny/lightline.vim')
   call dein#add('hashivim/vim-terraform')
   call dein#add('juliosueiras/vim-terraform-completion')
+  call dein#add('bronson/vim-trailing-whitespace')
   call dein#end()
   call dein#save_state()
 endif
@@ -138,3 +139,6 @@ let g:deoplete#enable_at_startup = 1
 " hashivim/vim-terraform
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
+" bronson/vim-trailing-whitespace
+autocmd BufWrite * silent! :FixWhitespace
