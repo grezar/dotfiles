@@ -17,6 +17,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('majutsushi/tagbar')
   call dein#add('osyo-manga/vim-over')
   call dein#add('airblade/vim-gitgutter')
+  call dein#add('w0rp/ale')
   call dein#end()
   call dein#save_state()
 endif
@@ -178,7 +179,17 @@ let g:terraform_fmt_on_save=1
 " bronson/vim-trailing-whitespace
 autocmd BufWrite * silent! :FixWhitespace
 
-" majutsushi/tagbar
+" w0rp/ale
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '⨉'
+let g:ale_sign_warning = '⚠'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_linters = {
+    \   'c' : ['clang-format'],
+    \   'cpp' : ['clang-format']
+    \}
 
 " startup
 autocmd VimEnter * Defx
