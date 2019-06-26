@@ -167,6 +167,8 @@ autocmd VimEnter * call defx#custom#option('_', {
      \   'show_ignored_files': 1,
      \ })
 
+autocmd VimEnter * Defx
+
 " hashivim/vim-terraform
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
