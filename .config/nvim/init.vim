@@ -15,6 +15,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('kristijanhusak/defx-icons')
   call dein#add('majutsushi/tagbar')
+  call dein#add('osyo-manga/vim-over')
+  call dein#add('airblade/vim-gitgutter')
   call dein#end()
   call dein#save_state()
 endif
@@ -89,6 +91,8 @@ nnoremap <silent> [denite]f :Denite file/rec<CR>
 nnoremap <silent> [denite]g :Denite grep<CR>
 nnoremap <silent> [denite]b :Denite buffer<CR>
 nnoremap <silent><C-n> :Defx<CR>
+nnoremap <silent><C-t> :TagbarToggle<CR>
+nnoremap <silent><C-s> :OverCommandLine<CR>
 
 " ctags
 let g:pid = getpid()
@@ -167,8 +171,6 @@ autocmd VimEnter * call defx#custom#option('_', {
      \   'show_ignored_files': 1,
      \ })
 
-autocmd VimEnter * Defx
-
 " hashivim/vim-terraform
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
@@ -177,4 +179,8 @@ let g:terraform_fmt_on_save=1
 autocmd BufWrite * silent! :FixWhitespace
 
 " majutsushi/tagbar
-autocmd VimEnter * nested :TagbarOpen
+
+" startup
+autocmd VimEnter * Defx
+autocmd VimEnter * TagbarOpen
+autocmd VimEnter * wincmd l
