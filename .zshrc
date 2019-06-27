@@ -80,32 +80,6 @@ PROMPT='%~${vcs_info_msg_0_} > '
 #
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-alias lg='lazygit'
-
-#
-# evnws
-#
-function envws() {
-  if [ "$(envws-helper e $1)" = "true" ]; then
-    eval $(envws-helper $@)
-  else
-    envws-helper $@
-  fi
-}
-
-export NVM_DIR="$HOME/.nvm"
-
-function node() {
-  unset -f node
-  nvm &>/dev/null
-  node "$@"
-}
-
-function nvm() {
-  unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  nvm "$@"
-}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/makita.riki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/makita.riki/google-cloud-sdk/path.zsh.inc'; fi
