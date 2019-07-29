@@ -18,6 +18,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('osyo-manga/vim-over')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('w0rp/ale')
+  call dein#add('plasticboy/vim-markdown')
   call dein#end()
   call dein#save_state()
 endif
@@ -195,3 +196,6 @@ let g:ale_linters = {
 autocmd VimEnter * Defx
 autocmd VimEnter * TagbarOpen
 autocmd VimEnter * wincmd l
+
+" plasticboy/vim-markdown
+let g:vim_markdown_folding_disabled = 1
