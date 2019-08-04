@@ -197,5 +197,10 @@ autocmd VimEnter * Defx
 autocmd VimEnter * TagbarOpen
 autocmd VimEnter * wincmd l
 
+augroup vgrant
+  autocmd!
+  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+
 " plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled = 1
