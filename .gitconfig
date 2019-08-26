@@ -12,7 +12,7 @@
   pu = push
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 [core]
-  editor = vim -c \"set fenc=utf-8\"
+  editor = nvim -c \"set fenc=utf-8\"
 [ghq]
   root = ~/ghq/src
   vcs = git
